@@ -1,10 +1,10 @@
 """ EE 250L Lab 02: GrovePi Sensors
 
-List team members here.
+Randi Burley
 
 Insert Github repository link here.
 """
-
+git@github.com:usc-ee250-spring2021/lab02-rburley89.git
 """python3 interpreters in Ubuntu (and other linux distros) will look in a 
 default set of directories for modules when a program tries to `import` one. 
 Examples of some default directories are (but not limited to):
@@ -23,6 +23,28 @@ sys.path.append('../../Software/Python/')
 sys.path.append('../../Software/Python/grove_rgb_lcd')
 
 import grovepi
+
+potentiometer=0
+
+led = I2C-2
+
+grovepi.pinMode(potentiometer, "INPUT")
+grovepi.pinMode(led, "OUTPUT")
+
+full_angle = 517
+
+while True:
+	try:
+		value = grovepi.analogRead(potentiometer)
+
+		grovepi.analogWrite(led)
+
+		print(value)
+	except KeyboardInterrupt:
+		grovepi.analogWrite(led,0)
+		break
+	except IOError:
+		print("Error")
 
 """This if-statement checks if you are running this python file directly. That 
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
