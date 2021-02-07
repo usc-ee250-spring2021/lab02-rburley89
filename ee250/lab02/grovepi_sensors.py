@@ -23,28 +23,20 @@ sys.path.append('../../Software/Python/')
 sys.path.append('../../Software/Python/grove_rgb_lcd')
 
 import grovepi
+import grove_rgb_lcd
 
 potentiometer=0
-
-led = I2C-2
-
 grovepi.pinMode(potentiometer, "INPUT")
-grovepi.pinMode(led, "OUTPUT")
 
-full_angle = 517
+led = 5
+adc_ref = 5
+grove_vcc = 5
+full_angle = 300
 
-while True:
-	try:
-		value = grovepi.analogRead(potentiometer)
+PORT = 4
 
-		grovepi.analogWrite(led)
-
-		print(value)
-	except KeyboardInterrupt:
-		grovepi.analogWrite(led,0)
-		break
-	except IOError:
-		print("Error")
+DISPLAY_RGB_ADDR = 0x62
+DISPLAY_TEXT_ADDR = 0x3e
 
 """This if-statement checks if you are running this python file directly. That 
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
@@ -57,4 +49,20 @@ if __name__ == '__main__':
         #sleep for a reasonable time of 200ms between each iteration.
         time.sleep(0.2)
 
-        print(grovepi.ultrasonicRead(PORT))
+        #print(grovepi.ultrasonicRead(PORT))
+
+        rotary_value = grovepi.ultrasonicRead(potentiometer)
+	ultra_value = grovepi.analogRead(potentiometer)
+	grove_rgb_lcd.setText_norefresh(str(ultra_value) + " cm\n" + str(rotary_value) + " cm)
+
+	if ultra_value <= rotary_value:
+		grove_rgb_lcd_setText_norefresh(str(ultra_value) + " cm OBJ PRES\n" + str(rotary_value) + " cm")
+	else if ultra_value > rotary_value:
+		grove_rgb_lcd.setText_norefresh(str(ultra_value) + "cm\n" + str(rotary_value) + " cm")
+
+        except KeyboardInterrupt:
+                grovepi.analogWrite(led,0)
+                break
+        except IOError:
+                print("Error")
+
