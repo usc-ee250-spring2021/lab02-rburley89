@@ -27,7 +27,7 @@ sys.path.append('../../Software/Python/grove_rgb_lcd')
 import grovepi
 import grove_rgb_lcd
 
-potentiometer=0
+potentiometer=2
 grovepi.pinMode(potentiometer, "INPUT")
 
 led = 5
