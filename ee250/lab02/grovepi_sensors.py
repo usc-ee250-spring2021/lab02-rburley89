@@ -61,7 +61,7 @@ if __name__ == '__main__':
                 if ultra_value <= rotary_value:
                         grove_rgb_lcd.setText_norefresh(str(ultra_value) + " cm OBJ PRES\n" + str(rotary_value) + " cm")
                 elif ultra_value >= rotary_value:
-                        grove_rgb_lcd.setText_norefresh(str(ultra_value) + " cm                \n" + str(rotary_value) + " cm")
+                        grove_rgb_lcd.setText_norefresh(str(ultra_value) + " cm          \n" + str(rotary_value) + " cm")
 
         except KeyboardInterrupt:
                 grovepi.analogWrite(led,0)
