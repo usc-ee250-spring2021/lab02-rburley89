@@ -54,8 +54,8 @@ if __name__ == '__main__':
 
         #print(grovepi.ultrasonicRead(PORT))
 
-                rotary_value = grovepi.ultrasonicRead(potentiometer)
-                ultra_value = grovepi.analogRead(potentiometer)
+                rotary_value = grovepi.analogRead(potentiometer)
+                ultra_value = grovepi.ultrasonicRead(PORT)
                 grove_rgb_lcd.setText_norefresh(str(ultra_value) + " cm\n" + str(rotary_value) + " cm")
 
                 if ultra_value <= rotary_value:
