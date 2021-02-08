@@ -52,13 +52,13 @@ if __name__ == '__main__':
         #print(grovepi.ultrasonicRead(PORT))
 
         rotary_value = grovepi.ultrasonicRead(potentiometer)
-	ultra_value = grovepi.analogRead(potentiometer)
-	grove_rgb_lcd.setText_norefresh(str(ultra_value) + " cm\n" + str(rotary_value) + " cm)
+        ultra_value = grovepi.analogRead(potentiometer)
+        grove_rgb_lcd.setText_norefresh(str(ultra_value) + " cm\n" + str(rotary_value) + " cm)
 
-	if ultra_value <= rotary_value:
-		grove_rgb_lcd_setText_norefresh(str(ultra_value) + " cm OBJ PRES\n" + str(rotary_value) + " cm")
-	else if ultra_value > rotary_value:
-		grove_rgb_lcd.setText_norefresh(str(ultra_value) + "cm\n" + str(rotary_value) + " cm")
+        if ultra_value <= rotary_value:
+                grove_rgb_lcd_setText_norefresh(str(ultra_value) + " cm OBJ PRES\n" + str(rotary_value) + " cm")
+        else if ultra_value > rotary_value:
+                grove_rgb_lcd.setText_norefresh(str(ultra_value) + "cm\n" + str(rotary_value) + " cm")
 
         except KeyboardInterrupt:
                 grovepi.analogWrite(led,0)
