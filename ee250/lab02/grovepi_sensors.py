@@ -45,20 +45,21 @@ if __name__ == '__main__':
     PORT = 4    # D4
 
     while True:
+        try:
         #So we do not poll the sensors too quickly which may introduce noise,
         #sleep for a reasonable time of 200ms between each iteration.
-        time.sleep(0.2)
+                time.sleep(0.2)
 
         #print(grovepi.ultrasonicRead(PORT))
 
-        rotary_value = grovepi.ultrasonicRead(potentiometer)
-        ultra_value = grovepi.analogRead(potentiometer)
-        grove_rgb_lcd.setText_norefresh(str(ultra_value) + " cm\n" + str(rotary_value) + " cm")
+                rotary_value = grovepi.ultrasonicRead(potentiometer)
+                ultra_value = grovepi.analogRead(potentiometer)
+                grove_rgb_lcd.setText_norefresh(str(ultra_value) + " cm\n" + str(rotary_value) + " cm")
 
-        if ultra_value <= rotary_value:
-                grove_rgb_lcd_setText_norefresh(str(ultra_value) + " cm OBJ PRES\n" + str(rotary_value) + " cm")
-        elif ultra_value >= rotary_value:
-                grove_rgb_lcd.setText_norefresh(str(ultra_value) + "cm\n" + str(rotary_value) + " cm")
+                if ultra_value <= rotary_value:
+                        grove_rgb_lcd_setText_norefresh(str(ultra_value) + " cm OBJ PRES\n" + str(rotary_value) + " cm")
+                elif ultra_value >= rotary_value:
+                        grove_rgb_lcd.setText_norefresh(str(ultra_value) + "cm\n" + str(rotary_value) + " cm")
 
         except KeyboardInterrupt:
                 grovepi.analogWrite(led,0)
